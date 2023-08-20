@@ -46,7 +46,6 @@ def p_data():
         SBP = 0
         DBP = 0
         HR = 0
-        curve = curve * 5
         PPG_coordinate = []
         ECG_coordinate = []
         x=0
