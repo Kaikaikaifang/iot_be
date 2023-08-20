@@ -32,7 +32,7 @@ def getData():
             data.reverse()        
         except json.JSONDecodeError:
             data = []
-    return data
+    return data[:15]
 
 @api.get('/data')
 def data():
@@ -50,25 +50,12 @@ def p_data():
         PPG_coordinate = []
         ECG_coordinate = []
         x=0
-        for index in range(0, len(curve), 14):
-            SBP = int(curve[index+8:index+9 + 1], 16)
-            DBP = int(curve[index+10:index+11 + 1], 16)
-            HR = int(curve[index+12:index+13 + 1], 16)
-            t1 = []
-            t2 = []
-            t1.append(x + index)
-            t2.append(x+index)
-            t1.append(int(curve[index:index + 2], 16)*256 + int(curve[index+2:index + 4], 16))  # 将16进制字符串转换成整数
-            t2.append(int(curve[index+4:index + 6], 16)*256 + int(curve[index+6:index + 8], 16))
-            PPG_coordinate.append(t1)
-            ECG_coordinate.append(t2)
-        for i in range(len(PPG_coordinate)):
-            PPG_coordinate[i][1] +=  randint(-1000,1000)
-            if(PPG_coordinate[i][1]<0):
-                PPG_coordinate[i][1] = 0
-            ECG_coordinate[i][1] += randint(-10000,10000)
-            if(ECG_coordinate[i][1] < 0):
-                ECG_coordinate[i][1] = 0
+        SBP = int(curve[200:202], 16)
+        DBP = int(curve[202:204], 16)
+        HR = int(curve[204:206], 16)
+        for i in range(0, 100, 4):
+            PPG_coordinate.append([i, int(curve[i:i+2], 16)*256 + int(curve[i+2:i+4], 16)])
+            ECG_coordinate.append([i, int(curve[i+50:i+52], 16)*256 + int(curve[i+52:i+54], 16)])
 
         data = {
             "SBP":SBP,  # 高压
