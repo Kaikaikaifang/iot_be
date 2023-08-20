@@ -77,7 +77,7 @@ def p_data():
             "PPG": PPG_coordinate,  # 脉搏图
             "ECG": ECG_coordinate,  # 心率图
             "V":randint(95,100),
-            "datetime": utils.getTs()
+            "datetime": utils.getTs(),
             "origin_data": curve
         }   
     
