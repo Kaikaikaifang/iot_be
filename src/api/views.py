@@ -71,8 +71,8 @@ def p_data():
             "SBP":SBP,  # 高压
             "DBP":DBP,  # 低压
             "HR": HR,  # 心率
-            "PPG": PPG_Standard,  # 脉搏图
-            "ECG": ECG_Standard,  # 心率图
+            "PPG": PPG_coordinate,  # 脉搏图
+            "ECG": ECG_coordinate,  # 心率图
             "V":randint(95,100),
             "datetime": utils.getTs()
         }   
