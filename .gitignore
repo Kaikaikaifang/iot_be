@@ -2,3 +2,5 @@
 *.iml
 *.xml
 *.pyc
+
+src/data.json
