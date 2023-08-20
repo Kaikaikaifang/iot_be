@@ -10,4 +10,8 @@ import os
 from src import create_app
 
 
-app = create_app(os.getenv('FLASK_ENV', 'default'))
+app, socketio = create_app(os.getenv('FLASK_ENV', 'default'))
+
+
+if __name__ == "__main__":
+    socketio.run(app, host='0.0.0.0', debug=True)

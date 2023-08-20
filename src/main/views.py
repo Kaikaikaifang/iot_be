@@ -8,7 +8,7 @@
 @Date    ：2022/10/22 11:24
 """
 from . import main
-from common import response
+from ..common import response
 
 
 @main.route('/', methods=['GET', 'POST'])
