@@ -78,6 +78,7 @@ def p_data():
             "ECG": ECG_coordinate,  # 心率图
             "V":randint(95,100),
             "datetime": utils.getTs()
+            "origin_data": curve
         }   
     
         with open(jsonAddr, "r", encoding="utf-8") as f:
