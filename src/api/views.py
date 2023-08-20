@@ -90,4 +90,4 @@ def p_data():
             json.dump(existing_data, file, indent=4)
     saveJson(request.data.decode())
     socketio.emit('new_data', getData())
-    return response.success({'data': request.data.decode()}, code=2001)
+    return response.success(code=2001)
