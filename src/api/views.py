@@ -27,9 +27,12 @@ def login():
 
 def getData():
     with open(jsonAddr, 'r', encoding="utf-8") as f:
-        data=json.load(f)
-        data.reverse()
-        return data
+        try:
+            data=json.load(f)
+            data.reverse()        
+        except json.JSONDecodeError:
+            data = []
+    return data
 
 @api.get('/data')
 def data():
