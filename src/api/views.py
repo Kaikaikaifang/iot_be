@@ -31,9 +31,9 @@ def data():
 
 @api.post('/data')
 def p_data():
-    save_data(request.data.decode())
-    socketio.emit('new_data', analyze_data(get_data()))
-    print('send new data')
+    if save_data(request.data.decode()):
+        socketio.emit('new_data', analyze_data(get_data()))
+        print('send new data')
     return response.success(code=2001)
 
 def get_data():
@@ -61,6 +61,7 @@ def save_data(data: str):
         existing_data.append({'times': 1, 'data': data, 'datetime': utils.getTs()})    
     with open(path, 'w') as file:
         json.dump(existing_data, file, indent=4)
+    return existing_data[-1]['times'] == 5
 
 def analyze_data(origin_data: list):
     analyzed_data = []
