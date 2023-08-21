@@ -27,7 +27,7 @@ def login():
 
 @api.get('/data')
 def data():
-    return response.success(analyzed_data(get_data()), code=2001)
+    return response.success(analyze_data(get_data()), code=2001)
 
 @api.post('/data')
 def p_data():
@@ -71,9 +71,11 @@ def analyze_data(origin_data: list):
         obj['HR'] = int(obj['data'][1004:1006], 16) 
         obj['PPG'] = []
         obj['ECG'] = []
+        index = 0
         for t in range(5):
             for i in range(t*200, t*200+100, 4):
-                obj['PPG'].append([i/4, int(curve[i:i+2], 16)*256 + int(curve[i+2:i+4], 16)])
-                obj['ECG'].append([i/4, int(curve[i+100:i+102], 16)*256 + int(curve[i+102:i+104], 16)])
+                obj['PPG'].append([index, int(obj['data'][i:i+2], 16)*256 + int(obj['data'][i+2:i+4], 16)])
+                obj['ECG'].append([index, int(obj['data'][i+100:i+102], 16)*256 + int(obj['data'][i+102:i+104], 16)])
+                index += 1
         analyzed_data.append(obj)
     return analyzed_data
