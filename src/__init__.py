@@ -14,7 +14,7 @@ from flask_socketio import SocketIO
 
 
 cors = CORS()
-allow_origin = ['http://localhost:5173', 'http://123.249.45.13:80', 'http://hwcloud.xyz']
+allow_origin = ['http://localhost:5173', 'http://123.249.45.13', 'http://hwcloud.xyz', 'https://hwcloud.xyz']
 
 """伪初始化扩展: 目的是向外暴露扩展实例"""
 # mongo = PyMongo()
