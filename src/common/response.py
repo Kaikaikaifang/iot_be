@@ -21,7 +21,6 @@ def res(status_code=200, data=None, code=1, message="OK", decorate=True):
     """
     if decorate:
         body = {'message': message, 'code': code}
-        print(data)
         if data:
             body['data'] = data
     else:
