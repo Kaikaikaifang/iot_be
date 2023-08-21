@@ -54,7 +54,7 @@ def p_data():
         HR = int(curve[204:206], 16)
         for i in range(0, 100, 4):
             PPG_coordinate.append([i, int(curve[i:i+2], 16)*256 + int(curve[i+2:i+4], 16)])
-            ECG_coordinate.append([i, int(curve[i+50:i+52], 16)*256 + int(curve[i+52:i+54], 16)])
+            ECG_coordinate.append([i, int(curve[i+100:i+102], 16)*256 + int(curve[i+102:i+104], 16)])
 
         data = {
             "SBP":SBP,  # 高压
