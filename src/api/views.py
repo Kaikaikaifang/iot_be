@@ -53,7 +53,7 @@ def save_data(data: str):
             existing_data = json.load(f)
         except json.JSONDecodeError:
             existing_data = []
-    if existing_data[-1]['times'] < 5:
+    if existing_data and existing_data[-1]['times'] < 5:
         existing_data[-1]['times'] += 1
         existing_data[-1]['data'] = existing_data[-1]['data'][:200] + data
         existing_data[-1]['datetime'] = utils.getTs()
