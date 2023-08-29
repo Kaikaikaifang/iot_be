@@ -40,7 +40,7 @@ def get_data():
     with open(path, 'r', encoding="utf-8") as f:
         try:
             data=json.load(f)
-            if data[-1]['times'] < times:
+            if data and data[-1]['times'] < times:
                 data.pop()
             data.reverse()        
         except json.JSONDecodeError:
