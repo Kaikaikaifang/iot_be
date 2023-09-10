@@ -14,4 +14,4 @@ app, socketio = create_app(os.getenv('FLASK_ENV', 'default'))
 
 
 if __name__ == "__main__":
-    socketio.run(app, port='8000', debug=True)
+    socketio.run(app, host='0.0.0.0', port='8000', debug=True)
